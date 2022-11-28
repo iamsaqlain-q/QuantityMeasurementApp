@@ -2,15 +2,16 @@ import { NavigationContainer } from '@react-navigation/native';
 import { StyleSheet, TextInput, View, Text } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import LengthScreen from './LengthScreen';
-import TemperatureScreen from './TemperatureScreen';
+import WeightScreen from './WeightScreen';
 
 const Tab = createMaterialTopTabNavigator();
-const Home = () => {
+const MeasurementPage = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarLabelStyle: { fontSize: 15, fontweight: 'bold', color: '#fff' },
-        tabBarStyle: { width: 355, backgroundColor: '#7600bc'},
+        tabBarStyle: { width: '100%', backgroundColor: '#7600bc' },
+        tabBarIndicatorStyle: {backgroundColor: '#fff'}
       })
       }
     >
@@ -19,18 +20,12 @@ const Home = () => {
         component={LengthScreen}
       />
       <Tab.Screen
-        name="Temperature"
-        component={TemperatureScreen}
+        name="Weight"
+        component={WeightScreen}
       />
     </Tab.Navigator>
 
   )
 }
-const styles = StyleSheet.create({
-  navcontainer: {
-    //height: 200,
-   // backgroundColor: '#fff',
-  },
-})
 
-export default Home
+export default MeasurementPage

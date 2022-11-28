@@ -1,13 +1,13 @@
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Button } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import React from 'react';
+import { Picker } from '@react-native-picker/picker';
 import { useState } from 'react';
 
-const LengthScreen = () => {
+const WeightScreen = () => {
   const [firstVal, setFirstVal] = useState('');
   const [secondVal, setSecondVal] = useState('');
-  const [valueFrom, setValueFrom] = useState('cm');
-  const [valueTo, setValueTo] = useState('cm');
+  const [valueFrom, setValueFrom] = useState('mg');
+  const [valueTo, setValueTo] = useState('mg');
 
   const reset = () => {
     setFirstVal(" ");
@@ -21,27 +21,27 @@ const LengthScreen = () => {
       setSecondVal(firstVal);
     }
     else {
-      if (valueFrom == "cm") {
-        if (valueTo == "m") {
+      if (valueFrom == "mg") {
+        if (valueTo == "g") {
           setSecondVal(firstVal / 100)
         }
-        else if (valueTo == "km") {
+        else if (valueTo == "kg") {
           setSecondVal(firstVal / 100000)
         }
       }
-      else if (valueFrom == "m") {
-        if (valueTo == "cm") {
+      else if (valueFrom == "g") {
+        if (valueTo == "mg") {
           setSecondVal(firstVal * 100)
         }
-        if (valueTo == "km") {
+        if (valueTo == "kg") {
           setSecondVal(firstVal / 1000)
         }
       }
-      else if (valueFrom == "km") {
-        if (valueTo == "cm") {
+      else if (valueFrom == "kg") {
+        if (valueTo == "mg") {
           setSecondVal(firstVal * 100000)
         }
-        if (valueTo == "m"){
+        if (valueTo == "g") {
           setSecondVal(firstVal * 1000)
         }
       }
@@ -56,9 +56,9 @@ const LengthScreen = () => {
           selectedValue={valueFrom}
           onValueChange={(itemValue, itemIndex) => setValueFrom(itemValue)}
         >
-          <Picker.Item label="cm" value="cm" />
-          <Picker.Item label="m" value="m" />
-          <Picker.Item label="km" value="km" />
+          <Picker.Item label="mg" value="mg" />
+          <Picker.Item label="g" value="g" />
+          <Picker.Item label="kg" value="kg" />
         </Picker>
       </View>
       <View style={styles.horiz}>
@@ -67,9 +67,9 @@ const LengthScreen = () => {
           selectedValue={valueTo}
           onValueChange={(itemValue, itemIndex) => setValueTo(itemValue)}
         >
-          <Picker.Item label="cm" value="cm" />
-          <Picker.Item label="m" value="m" />
-          <Picker.Item label="km" value="km" />
+          <Picker.Item label="mg" value="mg" />
+          <Picker.Item label="g" value="g" />
+          <Picker.Item label="kg" value="kg" />
         </Picker>
       </View>
       <TextInput value={firstVal} onChangeText={text => setFirstVal(text)} style={styles.input} placeholder="Enter Value Here" keyboardType="numeric" >
@@ -115,7 +115,6 @@ const styles = StyleSheet.create({
   pick: {
     margin: 5,
     width: 110,
-    borderWidth: 5,
     borderRadius: 10,
     backgroundColor: '#7600bc',
     marginBottom: 20,
@@ -141,4 +140,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default LengthScreen
+export default WeightScreen
